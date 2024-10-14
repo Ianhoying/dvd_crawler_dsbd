@@ -1,3 +1,5 @@
 streamlit
 pandas
+matplotlib
 numpy
+numpy_financial
