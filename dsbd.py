@@ -51,7 +51,7 @@ with tab2:
 	# st.dataframe(d)
 	
 with tab3:
-	st.subheader('Yahoo Finance (498개)')   
+	st.subheader('Yahoo Finance')   
 	st.dataframe(y_splits, hide_index = True, width = 2000, height = 300)
 	st.subheader('\n\n') 
 	st.subheader('Digrin')   
