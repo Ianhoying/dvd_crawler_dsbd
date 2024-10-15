@@ -29,6 +29,7 @@ t = ['01.홈' , '02.배당내역', '03.분할/병합내역']
 tab1, tab2, tab3 = st.tabs(t)
 
 with tab1:
+  st.subheader('미국주식 배당성장주 (498개)\n\n')
 
 with tab2:
   st.dataframe(n)
