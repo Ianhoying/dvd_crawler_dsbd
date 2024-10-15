@@ -31,6 +31,20 @@ tab1, tab2, tab3 = st.tabs(t)
 with tab1:
   st.subheader('미국주식 배당성장주 (498개)\n\n')
 
+	# Select Box
+	t1_r1c1_sb1, t1_r1c2_sb2, t1_r1c3_sb3 = st.columns(3)
+
+	with t1_r1c1_sb1:
+		f_sec = st.selectbox('- 사이트', ['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com'])
+    
+	with t1_r1c2_sb2:
+		f_mc = st.selectbox('- 알파벳', ['A', 'B', 'C'])
+    
+	with t1_r1c3_sb3:
+		f_pe = st.selectbox('- 티커', ['A', 'AAPL'])
+
+                                                     
+
 with tab2:
   st.dataframe(n)
   st.dataframe(s)
