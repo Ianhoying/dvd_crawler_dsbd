@@ -1,4 +1,4 @@
-import streamlit as st, pandas as pd, numpy as np, matplotlib as plt
+import streamlit as st, pandas as pd, numpy as np, matplotlib as plt, datetime
 
 # Data Import 
 
@@ -29,6 +29,9 @@ t = ['01.홈' , '02.배당내역', '03.분할/병합내역']
 tab1, tab2, tab3 = st.tabs(t)
 
 with tab1:
+	today = datetime.datetime.today().strftime('%Y-%m-%d')
+	st.text(today)
+	
 	st.text('배당감소 의심 종목\n\n')
 
 	st.text('배당내역 불일치 종목\n\n') 
