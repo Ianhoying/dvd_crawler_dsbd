@@ -1,6 +1,6 @@
 import streamlit as st, pandas as pd, numpy as np, matplotlib as plt
 
-# Data Import
+# Data Import 
 
 ## Dividends
 n = pd.read_csv('n.csv', encoding = 'EUC-KR').groupby('티커').head(5).copy()
