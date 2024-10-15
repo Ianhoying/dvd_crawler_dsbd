@@ -45,11 +45,11 @@ with tab2:
 		r1c3 = st.selectbox('- 티커', ['A', 'AAPL'])
 
 	if r1c1 == 'Nasdaq.com':
-		st.dataframe(n)
+		st.dataframe(n, hide_index = True, width = 2000, height = 300)
 	# st.dataframe(s)
 	# st.dataframe(y)
 	# st.dataframe(d)
 	
 with tab3:
-	st.dataframe(y_splits)
-	st.dataframe(d_splits)
+	st.dataframe(y_splits, hide_index = True, width = 2000, height = 300)
+	st.dataframe(d_splits, hide_index = True, width = 2000, height = 300)
