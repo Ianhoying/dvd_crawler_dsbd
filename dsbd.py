@@ -15,10 +15,10 @@ d_splits = pd.read_csv('d_splits.csv', encoding = 'EUC-KR')
 
 
 
-st.dataframe(n)
-st.dataframe(s)
-st.dataframe(y)
-st.dataframe(d)
+# st.dataframe(n)
+# st.dataframe(s)
+# st.dataframe(y)
+# st.dataframe(d)
 
 st.dataframe(y_splits)
 st.dataframe(d_splits)
