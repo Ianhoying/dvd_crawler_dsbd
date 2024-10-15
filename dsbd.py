@@ -30,7 +30,8 @@ tab1, tab2, tab3 = st.tabs(t)
 
 with tab1:
 	today = datetime.datetime.today().strftime('%Y-%m-%d')
-	st.text(str(today) + ' 기준\n\n')
+	st.text(str(today) + ' 기준\n\n\n\n')
+	
 	
 	st.text('배당감소 의심 종목\n\n')
 
