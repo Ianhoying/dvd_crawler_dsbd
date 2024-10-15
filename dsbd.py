@@ -3,10 +3,10 @@ import streamlit as st, pandas as pd, numpy as np, matplotlib as plt
 # Data Import 
 
 ## Dividends
-n = pd.read_csv('n.csv', encoding = 'EUC-KR').groupby('티커').head(5).copy()
-s = pd.read_csv('s.csv', encoding = 'EUC-KR').groupby('티커').head(5).copy()
-y = pd.read_csv('y.csv', encoding = 'EUC-KR').groupby('티커').head(5).copy()
-d = pd.read_csv('d.csv', encoding = 'EUC-KR').groupby('티커').head(5).copy()
+n = pd.read_csv('n.csv', encoding = 'EUC-KR')
+s = pd.read_csv('s.csv', encoding = 'EUC-KR')
+y = pd.read_csv('y.csv', encoding = 'EUC-KR')
+d = pd.read_csv('d.csv', encoding = 'EUC-KR')
 
 ## Stock Splits
 y_splits = pd.read_csv('y_splits.csv', encoding = 'EUC-KR')
