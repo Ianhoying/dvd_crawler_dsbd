@@ -29,7 +29,9 @@ t = ['01.홈' , '02.배당내역', '03.분할/병합내역']
 tab1, tab2, tab3 = st.tabs(t)
 
 with tab1:
-	st.subheader('미국주식 배당성장주 (498개)\n\n')
+	st.subheader('미국주식 배당성장주 (498개)\n\n')                                                   
+
+with tab2:
 	# Select Box
 	t1_r1c1_sb1, t1_r1c2_sb2, t1_r1c3_sb3 = st.columns(3)
 	
@@ -42,13 +44,12 @@ with tab1:
 	with t1_r1c3_sb3:
 		r1c3 = st.selectbox('- 티커', ['A', 'AAPL'])
 
-                                                     
-
-with tab2:
-  st.dataframe(n)
-  st.dataframe(s)
-  st.dataframe(y)
-  st.dataframe(d)
+	if r1c1 == 'Nasdaq.com':
+		st.dataframe(n)
+	# st.dataframe(s)
+	# st.dataframe(y)
+	# st.dataframe(d)
+	
 with tab3:
-  st.dataframe(y_splits)
-  st.dataframe(d_splits)
+	st.dataframe(y_splits)
+	st.dataframe(d_splits)
