@@ -23,7 +23,7 @@ st.set_page_config(layout = "wide")
 st.title('배당성장주 배당내역 모니터링 대시보드')
 
 today = datetime.datetime.today().strftime('%Y-%m-%d')
-st.caption(str(today) + ' 기준\n\n\n\n')
+st.caption('(' + str(today) + ' 기준)')
 
 # 탭명
 t = ['01.홈' , '02.배당내역', '03.분할/병합내역']
