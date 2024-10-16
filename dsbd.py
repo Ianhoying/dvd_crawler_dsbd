@@ -66,7 +66,7 @@ with tab2:
 			stock_select = ['전체']
 			for x in range(ord('A'), ord('Z') + 1):
 			    stock_select.append(chr(x))
-			r1c2 = st.selectbox('- 알파벳', stock_select)
+			r1c2 = st.selectbox('- 알파벳(티커 첫글자)', stock_select)
 
 			if r1c2 != '전체':
 				temp = temp[temp['티커'].str[0] == r1c2].reset_index(drop = True).copy()
@@ -78,14 +78,6 @@ with tab2:
 
 		r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
 		temp = temp[temp['티커'] == r1c3].reset_index(drop = True).copy()
-
-		# if r1c2 == '전체':
-		# 	r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
-		# 	temp = temp[temp['티커'] == r1c3].reset_index(drop = True).copy()
-		
-		# if r1c2 != '전체':
-		# 	r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
-		# 	temp = temp[temp['티커'] == r1c3].reset_index(drop = True).copy()
 
 	st.dataframe(temp, hide_index = True, width = 2000, height = 1000)
 
