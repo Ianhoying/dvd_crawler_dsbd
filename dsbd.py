@@ -1,3 +1,4 @@
+# Library Import
 import streamlit as st, pandas as pd, numpy as np, matplotlib as plt, datetime
 
 # Data Import 
@@ -26,24 +27,22 @@ st.title('배당성장주 배당내역 모니터링 대시보드')
 date = max(d['크롤링 날짜'].max(), n['크롤링 날짜'].max(), s['크롤링 날짜'].max(), y['크롤링 날짜'].max())
 st.caption('(' + str(date) + ' 기준, 매일 정오 업데이트)')
 
-# 탭명
+## Tab name list
 t = ['01.홈' , '02.배당내역', '03.분할/병합내역']
 
-# 대시보드 항목별 탭 분리 생성
+## Tabs
 tab1, tab2, tab3 = st.tabs(t)
 
+### 01.홈
 with tab1:
-	
-	
-	
 	
 	st.subheader('배당감소 의심 종목\n\n')
 
 	st.subheader('배당내역 불일치 종목\n\n') 
 	
-	st.subheader('주식 분할/병합 발생 종목\n\n')
+	st.subheader('주식 분할/병합 예정 종목\n\n')
 	
-
+### 02.배당내역
 with tab2:
 	# Select Box
 	t1_r1c1_sb1, t1_r1c2_sb2, t1_r1c3_sb3 = st.columns(3)
@@ -62,7 +61,8 @@ with tab2:
 	# st.dataframe(s)
 	# st.dataframe(y)
 	# st.dataframe(d)
-	
+
+### 03.분할/병합내역
 with tab3:
 	st.subheader('Yahoo Finance')   
 	st.dataframe(y_splits, hide_index = True, width = 2000, height = 300)
