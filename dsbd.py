@@ -79,7 +79,7 @@ with tab2:
 			r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
 			temp = temp[temp['티커'] == r1c3].reset_index(drop = True).copy()
 
-	st.dataframe(temp, hide_index = True, width = 2000, height = 300)
+	st.dataframe(temp, hide_index = True, width = 2000, height = 1000)
 
 
 ### 03.분할/병합내역
