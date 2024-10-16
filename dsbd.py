@@ -75,9 +75,17 @@ with tab2:
 			st.selectbox('- 알파벳', '사이트를 선택해주세요.')
 	
 	with t1_r1c3_sb3:
-		if r1c2 != '전체':
-			r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
-			temp = temp[temp['티커'] == r1c3].reset_index(drop = True).copy()
+
+		r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
+		temp = temp[temp['티커'] == r1c3].reset_index(drop = True).copy()
+
+		# if r1c2 == '전체':
+		# 	r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
+		# 	temp = temp[temp['티커'] == r1c3].reset_index(drop = True).copy()
+		
+		# if r1c2 != '전체':
+		# 	r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
+		# 	temp = temp[temp['티커'] == r1c3].reset_index(drop = True).copy()
 
 	st.dataframe(temp, hide_index = True, width = 2000, height = 1000)
 
