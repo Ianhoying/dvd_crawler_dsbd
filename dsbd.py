@@ -22,7 +22,8 @@ st.set_page_config(layout = "wide")
 ## Dashboard Title
 st.title('배당성장주 배당내역 모니터링 대시보드')
 
-today = datetime.datetime.today().strftime('%Y-%m-%d')
+## Caption
+date = max(d['크롤링 날짜'].max(), n['크롤링 날짜'].max(), s['크롤링 날짜'].max(), y['크롤링 날짜'].max())
 st.caption('(' + str(today) + ' 기준, 매일 정오 업데이트)')
 
 # 탭명
