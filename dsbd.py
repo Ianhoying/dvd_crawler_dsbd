@@ -3,15 +3,84 @@ import streamlit as st, pandas as pd, numpy as np, matplotlib as plt, datetime
 
 # Data Import 
 
-## Dividends
+## Data : Dividends
 n = pd.read_csv('n.csv', encoding = 'EUC-KR')
 s = pd.read_csv('s.csv', encoding = 'EUC-KR')
 y = pd.read_csv('y.csv', encoding = 'EUC-KR')
 d = pd.read_csv('d.csv', encoding = 'EUC-KR')
 
-## Stock Splits
+## Data : Stock Splits
 y_splits = pd.read_csv('y_splits.csv', encoding = 'EUC-KR')
 d_splits = pd.read_csv('d_splits.csv', encoding = 'EUC-KR')
+
+## Data Pre-processing
+def df_divide(df, gubun):
+
+    df[gubun] = 'Y'
+
+    for i in df.columns:
+        if i in ['티커', '배당락일', gubun]:
+            continue
+        else:
+            df = df.rename(columns = {i : i + '_' + gubun})
+
+    f = df[pd.to_datetime(df['배당락일']) > pd.to_datetime(datetime.datetime.today())].reset_index(drop = True).copy()
+    p = df[pd.to_datetime(df['배당락일']) <= pd.to_datetime(datetime.datetime.today())].reset_index(drop = True).copy()
+    
+    return f, p
+
+n_future, n_past = df_divide(n, 'n')
+s_future, s_past = df_divide(s, 's')
+y_future, y_past = df_divide(y, 'y')
+d_future, d_past = df_divide(d, 'd')
+
+def div_unequal(n, s, y, d):
+
+    total_future = \
+        pd.merge(d, \
+                 pd.merge(y, \
+                          pd.merge(n, s, 'outer', ['티커', '배당락일']),\
+                          'outer', ['티커', '배당락일']),\
+                 'outer', ['티커', '배당락일'])
+
+    # 정기배당만 남김
+    total_future = total_future[total_future['배당유형_s'] == 'Regular'].reset_index(drop = True).copy()
+
+    # nasdaq, seekingalpha, digrin 모두 갖고 있는 배당내역인 경우만 추출
+    total_future_Y =\
+        total_future[(total_future['n'] == 'Y') &
+                    (total_future['s'] == 'Y') &
+                    (total_future['d'] == 'Y')][total_future.columns.sort_values()].reset_index(drop = True)
+
+def div_unequal(n, s, y, d):
+
+	total_future = \
+	pd.merge(d, \
+		 pd.merge(y, \
+			  pd.merge(n, s, 'outer', ['티커', '배당락일']),\
+			  'outer', ['티커', '배당락일']),\
+		 'outer', ['티커', '배당락일'])
+
+	# 정기배당만 남김
+	total_future = total_future[total_future['배당유형_s'] == 'Regular'].reset_index(drop = True).copy()
+
+	# nasdaq, seekingalpha, digrin 모두 갖고 있는 배당내역인 경우만 추출
+	total_future_Y =\
+	total_future[(total_future['n'] == 'Y') &
+		    (total_future['s'] == 'Y') &
+		    (total_future['d'] == 'Y')][total_future.columns.sort_values()].reset_index(drop = True)
+
+	total_future_Y[ ~((total_future_Y['배당금액_n'] == total_future_Y['수정배당금액_s']) &\
+		  (total_future_Y['배당금액_n'] == total_future_Y['수정배당금액_d']) &\
+		  (total_future_Y['수정배당금액_s'] == total_future_Y['수정배당금액_d']))]
+
+
+
+total_splits = pd.merge(y_splits, d_splits, 'outer', ['티커', '권리락일'])
+total_splits['분할/병합'] = total_splits['분할/병합_y']
+# total_splits[total_splits['분할/병합_x'].isnull(), '분할/병합'] = total_splits['분할/병합_y']
+total_splits.loc[total_splits['분할/병합_y'].isnull(), '분할/병합'] = total_splits['분할/병합_x']
+
 
 
 
