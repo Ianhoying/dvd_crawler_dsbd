@@ -30,15 +30,15 @@ tab1, tab2, tab3 = st.tabs(t)
 
 with tab1:
 	today = datetime.datetime.today().strftime('%Y-%m-%d')
-	st.subheader(str(today) + ' 기준\n\n\n\n')
+	st.caption(str(today) + ' 기준\n\n\n\n')
 	
 	
 	
-	st.text('배당감소 의심 종목\n\n')
+	st.subheader('배당감소 의심 종목\n\n')
 
-	st.text('배당내역 불일치 종목\n\n') 
+	st.subheader('배당내역 불일치 종목\n\n') 
 	
-	st.text('주식 분할/병합 발생 종목\n\n')
+	st.subheader('주식 분할/병합 발생 종목\n\n')
 	
 
 with tab2:
