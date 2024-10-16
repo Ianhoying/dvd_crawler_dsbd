@@ -103,7 +103,7 @@ with tab3:
 			stock_select = ['전체']
 			for x in range(ord('A'), ord('Z') + 1):
 			    stock_select.append(chr(x))
-			print(stock_select)
+			st.text(stock_select)
 			t3_r1c2 = st.selectbox('- 알파벳(티커 첫글자)', stock_select)
 
 			if t3_r1c2 != '전체':
