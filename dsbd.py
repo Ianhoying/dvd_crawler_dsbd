@@ -48,42 +48,81 @@ with tab2:
 	t1_r1c1_sb1, t1_r1c2_sb2, t1_r1c3_sb3 = st.columns(3)
 	
 	with t1_r1c1_sb1:
-		r1c1 = st.selectbox('- 사이트', ['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com'])
-		if r1c1 == 'Nasdaq.com':
+		t1_r1c1 = st.selectbox('- 사이트', ['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com'])
+		if t1_r1c1 == 'Nasdaq.com':
 			temp = n.copy()
-		if r1c1 == 'SeekingAlpha':
+		if t1_r1c1 == 'SeekingAlpha':
 			temp = s.copy()
-		if r1c1 == 'YahooFinance':
+		if t1_r1c1 == 'YahooFinance':
 			temp = y.copy()
-		if r1c1 == 'Digrin.com':
+		if t1_r1c1 == 'Digrin.com':
 			temp = d.copy()
 	
 	with t1_r1c2_sb2:
 
 		# Only User choose WebSite above
-		if len(r1c1) > 0:
+		if len(t1_r1c1) > 0:
 		
 			stock_select = ['전체']
 			for x in range(ord('A'), ord('Z') + 1):
 			    stock_select.append(chr(x))
-			r1c2 = st.selectbox('- 알파벳(티커 첫글자)', stock_select)
+			t1_r1c2 = st.selectbox('- 알파벳(티커 첫글자)', stock_select)
 
-			if r1c2 != '전체':
-				temp = temp[temp['티커'].str[0] == r1c2].reset_index(drop = True).copy()
+			if t1_r1c2 != '전체':
+				temp = temp[temp['티커'].str[0] == t1_r1c2].reset_index(drop = True).copy()
 
 		else:
 			st.selectbox('- 알파벳', '사이트를 선택해주세요.')
 	
 	with t1_r1c3_sb3:
 
-		r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
-		temp = temp[temp['티커'] == r1c3].reset_index(drop = True).copy()
+		t1_r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
+		temp = temp[temp['티커'] == t1_r1c3].reset_index(drop = True).copy()
 
 	st.dataframe(temp, hide_index = True, width = 2000, height = 1000)
 
 
 ### 03.분할/병합내역
 with tab3:
+
+	# Select Box
+	t3_r1c1_sb1, t3_r1c2_sb2, t3_r1c3_sb3 = st.columns(3)
+
+	with t3_r1c1_sb1:
+		t3_r1c1 = st.selectbox('- 사이트', ['YahooFinance', 'Digrin.com'])
+		if t3_r1c1 == 'YahooFinance':
+			temp_splits = y_splits.copy()
+		if t3_r1c1 == 'Digrin.com':
+			temp_splits = d_splits.copy()
+	
+	with t3_r1c2_sb2:
+
+		# Only User choose WebSite above
+		if len(t3_r1c1) > 0:
+		
+			stock_select = ['전체']
+			for x in range(ord('A'), ord('Z') + 1):
+			    stock_select.append(chr(x))
+			t3_r1c2 = st.selectbox('- 알파벳(티커 첫글자)', stock_select)
+
+			if t3_r1c2 != '전체':
+				temp_splits = temp_splits[temp_splits['티커'].str[0] == t3_r1c2].reset_index(drop = True).copy()
+
+		else:
+			st.selectbox('- 알파벳', '사이트를 선택해주세요.')
+	
+	with t3_r1c3_sb3:
+
+		t3_r1c3 = st.selectbox('- 티커', pd.unique(temp_splits['티커']))
+		temp_splits = temp_splits[temp_splits['티커'] == t3_r1c3].reset_index(drop = True).copy()
+
+	st.dataframe(temp_splits, hide_index = True, width = 2000, height = 1000)
+
+
+
+
+	
+	
 	st.subheader('Yahoo Finance')   
 	st.dataframe(y_splits, hide_index = True, width = 2000, height = 300)
 	st.subheader('\n\n') 
