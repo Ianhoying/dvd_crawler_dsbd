@@ -49,18 +49,38 @@ with tab2:
 	
 	with t1_r1c1_sb1:
 		r1c1 = st.selectbox('- 사이트', ['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com'])
+		if r1c1 == 'Nasdaq.com':
+			temp = n.copy()
+		if r1c1 == 'SeekingAlpha':
+			temp = s.copy()
+		if r1c1 == 'YahooFinance':
+			temp = y.copy()
+		if r1c1 == 'Digrin.com':
+			temp = d.copy()
 	
 	with t1_r1c2_sb2:
-		r1c2 = st.selectbox('- 알파벳', ['A', 'B', 'C'])
+
+		# Only User choose WebSite above
+		if len(r1c1) > 0:
+		
+			stock_select = ['전체']
+			for x in range(ord('A'), ord('Z') + 1):
+			    stock_select.append(chr(x))
+			r1c2 = st.selectbox('- 알파벳', stock_select)
+
+			if r1c2 != '전체':
+				temp = temp[temp['티커'].str[0] == r1c2].reset_index(drop = True).copy()
+
+		else:
+			st.selectbox('- 알파벳', '사이트를 선택해주세요.')
 	
 	with t1_r1c3_sb3:
-		r1c3 = st.selectbox('- 티커', ['A', 'AAPL'])
+		if r1c2 != '전체':
+			r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
+			temp = temp[temp['티커'] == r1c3].reset_index(drop = True).copy()
 
-	if r1c1 == 'Nasdaq.com':
-		st.dataframe(n, hide_index = True, width = 2000, height = 300)
-	# st.dataframe(s)
-	# st.dataframe(y)
-	# st.dataframe(d)
+	st.dataframe(temp, hide_index = True, width = 2000, height = 300)
+
 
 ### 03.분할/병합내역
 with tab3:
