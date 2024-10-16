@@ -116,7 +116,7 @@ with tab3:
 		t3_r1c3 = st.selectbox('- 티커', pd.unique(temp_splits['티커']))
 		temp_splits = temp_splits[temp_splits['티커'] == t3_r1c3].reset_index(drop = True).copy()
 
-	st.dataframe(temp_splits, hide_index = True, width = 2000, height = 1000)
+	st.dataframe(temp_splits, hide_index = True, width = 2000, height = 300)
 
 
 
