@@ -117,14 +117,3 @@ with tab3:
 		temp_splits = temp_splits[temp_splits['티커'] == t3_r1c3].reset_index(drop = True).copy()
 
 	st.dataframe(temp_splits, hide_index = True, width = 2000, height = 300)
-
-
-
-
-	
-	
-	st.subheader('Yahoo Finance')   
-	st.dataframe(y_splits, hide_index = True, width = 2000, height = 300)
-	st.subheader('\n\n') 
-	st.subheader('Digrin')   
-	st.dataframe(d_splits, hide_index = True, width = 2000, height = 300)
