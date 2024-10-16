@@ -104,7 +104,7 @@ with tab3:
 			for x in range(ord('A'), ord('Z') + 1):
 			    stock_select.append(chr(x))
 			st.text(stock_select)
-			t3_r1c2 = st.selectbox('- 알파벳(티커 첫글자)', pd.unique(stock_select))
+			t3_r1c2 = st.selectbox('- 알파벳', stock_select)
 
 			if t3_r1c2 != '전체':
 				temp_splits = temp_splits[temp_splits['티커'].str[0] == t3_r1c2].reset_index(drop = True).copy()
