@@ -13,93 +13,12 @@ d = pd.read_csv('d.csv', encoding = 'EUC-KR')
 y_splits = pd.read_csv('y_splits.csv', encoding = 'EUC-KR')
 d_splits = pd.read_csv('d_splits.csv', encoding = 'EUC-KR')
 
-## Data Pre-processing
-def df_divide(df, gubun):
+## Data : Stock Splits
+div_cut = pd.read_csv('div_cut.csv', encoding = 'EUC-KR')
+div_check = pd.read_csv('div_check.csv', encoding = 'EUC-KR')
+total_splits = pd.read_csv('total_splits.csv', encoding = 'EUC-KR')
 
-    df[gubun] = 'Y'
 
-    for i in df.columns:
-        if i in ['티커', '배당락일', gubun]:
-            continue
-        else:
-            df = df.rename(columns = {i : i + '_' + gubun})
-    
-    return df
-
-def df_total(n, s, y, d):
-
-    _n = df_divide(n, 'n')
-    _s = df_divide(s, 's')
-    _y = df_divide(y, 'y')
-    _d = df_divide(d, 'd')
-
-    n_li = ['티커', '배당락일', '배당금액_n' , 'n']
-    s_li = ['티커', '배당락일', '배당금액_s','수정배당금액_s', '조정팩터_s', '지급주기_s', '배당유형_s', 's']
-    y_li = ['티커', '배당락일', '수정배당금액_y', 'y']
-    d_li = ['티커', '배당락일', '수정배당금액_d', 'd']
-
-    total = \
-        pd.merge(_d[d_li], \
-                 pd.merge(_y[y_li], \
-                          pd.merge(_n[n_li], _s[s_li], 'outer', ['티커', '배당락일']),\
-                          'outer', ['티커', '배당락일']),\
-                 'outer', ['티커', '배당락일'])
-
-    # Regualr dividends
-    total = total[total['배당유형_s'] == 'Regular'].reset_index(drop = True).copy()
-
-    # Only Y Y Y
-    total = \
-    total[(total['n'] == 'Y') &
-    (total['s'] == 'Y') &
-    (total['d'] == 'Y')][['티커', '배당락일',\
-                          '배당금액_n', '배당금액_s', '수정배당금액_s', '수정배당금액_y', '수정배당금액_d',\
-                          '조정팩터_s', '지급주기_s', '배당유형_s']].sort_values(['티커', '배당락일'], ascending = [True, False]).reset_index(drop = True)
-
-    # Recent info shift
-    for i in total.columns:
-        if i == '티커':
-            continue
-        else:
-            total['직전_' + i] = total.groupby('티커').shift(-1)[i]
-
-    total = total[['티커', '배당락일', '직전_배당락일',\
-                   '배당금액_n', '직전_배당금액_n', '배당금액_s', '직전_배당금액_s',\
-                   '수정배당금액_s', '직전_수정배당금액_s', '수정배당금액_y', '직전_수정배당금액_y', '수정배당금액_d', '직전_수정배당금액_d',\
-                   '조정팩터_s', '직전_조정팩터_s', '지급주기_s', '직전_지급주기_s', '배당유형_s',  '직전_배당유형_s']]
-    
-    f = total[pd.to_datetime(total['배당락일']) > pd.to_datetime(datetime.datetime.today())].reset_index(drop = True).copy()
-    p = total[pd.to_datetime(total['배당락일']) <= pd.to_datetime(datetime.datetime.today())].reset_index(drop = True).copy()
-
-    recent = pd.concat([p.groupby('티커').head(1), f.groupby('티커').tail(1)], axis = 0)\
-    .sort_values(['티커', '배당락일'], ascending = [True, False]).groupby('티커').tail(1).reset_index(drop = True)
-                          
-    return total, f, p, recent
-	
-
-total, total_future, total_past, recent = df_total(n, s, y, d)
-
-# 직전대비 줄어든 경우
-div_cut = \
-recent[
-(recent['배당금액_n'] < recent['직전_배당금액_n'])|
-(recent['수정배당금액_s'] < recent['직전_수정배당금액_s'])|
-(recent['수정배당금액_d'] < recent['직전_수정배당금액_d'])
-].reset_index(drop = True)
-
-# 사이트별로 서로 다른 경우
-div_check = \
-recent[
-(recent['배당금액_n'] != recent['수정배당금액_s'])|
-(recent['수정배당금액_s'] != recent['수정배당금액_d'])|
-(recent['수정배당금액_d'] != recent['배당금액_n'])
-].reset_index(drop = True)
-
-total_splits = pd.merge(y_splits, d_splits, 'outer', ['티커', '권리락일'])
-total_splits['분할/병합'] = total_splits['분할/병합_y']
-total_splits.loc[total_splits['분할/병합_y'].isnull(), '분할/병합'] = total_splits['분할/병합_x']
-total_splits = total_splits.drop(['분할/병합_x', '분할/병합_y'], axis = 1)
-total_splits['분할/병합 여부'] = 'Y'
 
 # Dashboard 
 
