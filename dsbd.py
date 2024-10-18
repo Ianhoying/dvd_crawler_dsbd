@@ -69,7 +69,7 @@ with tab1:
 
 	with t1_r2c1:
 		cnt = str(len(div_cut))
-		st.markdown('배당감소 종목 수 : :blue-background{cnt}개')
+		st.markdown('배당감소 종목 수 : :blue-background{cnt}(str(len(div_cut)))개')
 		# st.markdown('''
 		#     :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
 		#     :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.''')
