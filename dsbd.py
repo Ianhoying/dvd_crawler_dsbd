@@ -47,7 +47,7 @@ with tab1:
 	t1_r1c1, t1_r1c2 = st.columns(2)
 
 	with t1_r1c1:
-		t1_r1c1_sb1 = st.selectbox('배당감소 종목 수 : '+str(len(div_cut))+' 개', ['배당컷', '주기변동', '분할/병합'])
+		t1_r1c1_sb1 = st.selectbox('배당감소 종목 수 : '+str(len(div_cut))+' 개', ['배당컷', '주기변동', '분할/병합', '기타(오류 등)'])
 	
 	# with t1_r1c2:
 	# 	t1_r1c1_sb1 = st.selectbox('배당감소 종목 수 : '+str(len(div_cut))+' 개', ['배당컷', '주기변동', '분할/병합'])
@@ -62,8 +62,8 @@ with tab1:
 		# 각 항목별 건수 Bar chart (주기변동, 분할/병합, 배당컷)
 		chart_data = pd.DataFrame(
 		    {
-		        "감소 사유": list(['주기변동', '분할/병합' ,'배당컷']),
-		        "종목 수": [3,2,1]
+		        "감소 사유": list(['주기변동', '분할/병합' ,'배당컷', '기타(오류 등)']),
+		        "종목 수": [0, 0, 0, 6]
 		    }
 		)
 		st.bar_chart(chart_data, x = '감소 사유', y = '종목 수', color = '#F08080')
