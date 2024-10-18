@@ -62,7 +62,7 @@ with tab1:
 	t1_r2c1, t1_r2c2 = st.columns(2)
 
 	with t1_r2c1:
-		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300, column_order = ('티커', '분할/병합 여부', '지급주기 변동', '직전_배당락일', '배당락일', '직전_배당금액_s', '분할/병합', '배당금액_s'))
+		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300, column_order = ('티커', '분할/병합 여부', '지급주기 변동', '직전_배당락일', '배당락일', '직전_배당금액_s', '배당금액_s', '분할/병합'))
 		
 	with t1_r2c2:
 
