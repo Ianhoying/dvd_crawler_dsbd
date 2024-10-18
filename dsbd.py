@@ -77,7 +77,7 @@ with tab1:
 		        "col2": [3,2,1,1]
 		    }
 		)
-		st.bar_chart(chart_data, x = col1, y = col2)
+		st.bar_chart(chart_data, x = 'col1', y = 'col2')
 		
 
 	with t1_r4c2:
