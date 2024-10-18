@@ -83,7 +83,7 @@ with tab1:
 		#     }
 		# )
 		div_cut_count = div_cut.groupby('구분')[['티커']].count().reset_index().rename(columns = {'티커' : '종목 수'})
-		st.bar_chart(chart_data, x = '구분', y = '종목 수', color = '#F08080')
+		st.bar_chart(div_cut_count, x = '구분', y = '종목 수', color = '#F08080')
 		
 
 	st.divider()
