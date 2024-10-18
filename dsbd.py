@@ -49,7 +49,8 @@ tab1, tab2, tab3 = st.tabs(t)
 with tab1:
 	
 	st.subheader('배당감소 모니터링\n\n')
-	st.caption('체크리스트\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
+
+	st.caption('\n체크리스트\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
 
 	t1_r1c1, t1_r1c2 = st.columns(2)
 
