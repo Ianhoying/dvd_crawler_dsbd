@@ -57,10 +57,10 @@ with tab1:
 	st.caption('🚩 기준 : 조회일자 기준 과거 배당내역 1건 & 다음 배당내역 1건 비교 (단, 다음 배당내역이 없는 경우 과거 배당내역 2건)')
 	st.caption('\n✅ 체크리스트\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
 
-	t1_r1c1, t1_r1c2 = st.columns(2)
+	# t1_r1c1, t1_r1c2 = st.columns(2)
 
-	with t1_r1c1:
-		t1_r1c1_sb1 = st.selectbox('배당감소 종목 수 : '+str(len(div_cut))+' 개', ['배당컷', '주기변동', '분할/병합', '기타(오류 등)'])
+	# with t1_r1c1:
+	# 	t1_r1c1_sb1 = st.selectbox('배당감소 종목 수 : '+str(len(div_cut))+' 개', ['배당컷', '주기변동', '분할/병합', '기타(오류 등)'])
 	
 	# with t1_r1c2:
 	# 	t1_r1c1_sb1 = st.selectbox('배당감소 종목 수 : '+str(len(div_cut))+' 개', ['배당컷', '주기변동', '분할/병합'])
@@ -68,6 +68,7 @@ with tab1:
 	t1_r2c1, t1_r2c2 = st.columns(2)
 
 	with t1_r2c1:
+		st.caption('배당감소 종목 수 : '+str(len(div_cut))+' 개')
 		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300, column_order = ('티커', '지급주기 변동', '분할/병합 여부', '분할/병합', '권리락일',\
 												     '직전_배당락일', '배당락일',\
 												     '직전_배당금액_n', '배당금액_n', '직전_배당금액_s', '배당금액_s',\
