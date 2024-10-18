@@ -127,10 +127,8 @@ with tab1:
 ### 02.배당내역
 with tab2:
 
-	st.subheader('크롤링 사이트별 과거 배당내역 조회\n\n')
-	
+	st.subheader('사이트별 과거 배당내역 조회\n\n')
 
-	
 	# Select Box
 	t1_r1c1_sb1, t1_r1c2_sb2, t1_r1c3_sb3 = st.columns(3)
 	
@@ -179,6 +177,8 @@ with tab2:
 
 ### 03.분할/병합내역
 with tab3:
+
+	st.subheader('사이트별 분할/병합 내역 조회\n\n')
 
 	# Select Box
 	t3_r1c1_sb1, t3_r1c2_sb2, t3_r1c3_sb3 = st.columns(3)
