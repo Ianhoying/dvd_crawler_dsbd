@@ -41,8 +41,8 @@ tab1, tab2, tab3 = st.tabs(t)
 ### 01.홈
 with tab1:
 	
-	st.subheader('배당감소 의심 종목\n\n')
-	st.caption('- 배당내역 크롤링 사이트 3곳 모두 해당 내역 존재\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
+	st.subheader('배당감소 종목\n\n')
+	st.caption('체크리스트\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
 
 	t1_r1c1, t1_r1c2 = st.columns(2)
 	
