@@ -58,6 +58,7 @@ with tab1:
 	with t1_r2c2:
 		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300)
 
+	st.divider()
 	st.subheader('배당내역 불일치 종목\n\n')
 	st.caption('- 배당내역 크롤링 사이트 3곳 모두 해당 내역 존재\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
 
