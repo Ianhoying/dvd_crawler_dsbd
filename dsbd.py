@@ -134,7 +134,7 @@ with tab2:
 		t1_r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
 		temp = temp[temp['티커'] == t1_r1c3].reset_index(drop = True).copy()
 
-	st.bar_chart(temp, x = '배당락일', y = y_axis, color = '#808080')
+	st.bar_chart(temp, x = '배당락일', y = y_axis, color = '#F08080')
 
 	st.dataframe(temp, hide_index = True, width = 2000, height = 500)
 
