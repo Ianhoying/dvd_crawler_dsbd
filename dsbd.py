@@ -59,29 +59,29 @@ with tab1:
 		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300)
 
 	st.divider()
-	st.subheader('배당내역 불일치 종목\n\n')
-	st.caption('- 배당내역 크롤링 사이트 3곳 모두 해당 내역 존재\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
+	# st.subheader('배당내역 불일치 종목\n\n')
+	# st.caption('- 배당내역 크롤링 사이트 3곳 모두 해당 내역 존재\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
 
-	t1_r3c1, t1_r3c2 = st.columns(2)
+	# t1_r3c1, t1_r3c2 = st.columns(2)
 
-	with t1_r3c2:
-		t1_r1c1_sb1 = st.selectbox('', ['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com'])
+	# with t1_r3c2:
+	# 	t1_r1c1_sb1 = st.selectbox('', ['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com'])
 		
-	t1_r4c1, t1_r4c2 = st.columns(2)
+	# t1_r4c1, t1_r4c2 = st.columns(2)
 
-	with t1_r4c1:
-		# 각 사이트별 건수 Bar chart ()
-		chart_data = pd.DataFrame(
-		    {
-		        "사이트": list(['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com']),
-		        "배당내역 불일치 건수": [3,2,1,1]
-		    }
-		)
-		st.bar_chart(chart_data, x = '사이트', y = '배당내역 불일치 건수', color = '#808080')
+	# with t1_r4c1:
+	# 	# 각 사이트별 건수 Bar chart ()
+	# 	chart_data = pd.DataFrame(
+	# 	    {
+	# 	        "사이트": list(['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com']),
+	# 	        "배당내역 불일치 건수": [3,2,1,1]
+	# 	    }
+	# 	)
+	# 	st.bar_chart(chart_data, x = '사이트', y = '배당내역 불일치 건수', color = '#808080')
 		
 
-	with t1_r4c2:
-		st.dataframe(div_check, hide_index = True, width = 2000, height = 300)
+	# with t1_r4c2:
+	# 	st.dataframe(div_check, hide_index = True, width = 2000, height = 300)
 	
 	# st.subheader('주식 분할/병합 예정 종목\n\n')
 	# st.caption('')
