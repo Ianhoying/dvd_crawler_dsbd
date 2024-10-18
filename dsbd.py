@@ -47,7 +47,7 @@ with tab1:
 	t1_r1c1, t1_r1c2 = st.columns(2)
 
 	with t1_r1c1:
-		st.subheader('배당감소 종목 수 : '+str(len(div_cut))+' 개')
+		st.text('배당감소 종목 수 : '+str(len(div_cut))+' 개')
 	
 	with t1_r1c2:
 		t1_r1c1_sb1 = st.selectbox('', ['배당컷', '주기변동', '분할/병합'])
