@@ -133,7 +133,8 @@ with tab2:
 
 		t1_r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
 		temp = temp[temp['티커'] == t1_r1c3].reset_index(drop = True).copy()
-
+		
+	st.subheader('(주의 : 특별배당 포함)')
 	st.bar_chart(temp, x = '배당락일', y = y_axis, color = '#F08080')
 
 	st.dataframe(temp, hide_index = True, width = 2000, height = 500)
