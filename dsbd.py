@@ -29,8 +29,8 @@ div_cut = pd.merge(div_cut, split_yn[['티커', '분할/병합', '권리락일']
 
 # Div cut check
 div_cut['구분'] = '기타(오류)'
-div_cut.loc[ (div_cut['분할/병합 여부'] > 0) & (), '구분'] = '분할/병합'
-div_cut.loc[ (div_cut['지급주기 변동'] == 'Y') & (), '구분'] = '분할/병합'
+# div_cut.loc[ (div_cut['분할/병합 여부'] > 0) & (), '구분'] = '분할/병합'
+# div_cut.loc[ (div_cut['지급주기 변동'] == 'Y') & (), '구분'] = '분할/병합'
 
 # Dashboard 
 
