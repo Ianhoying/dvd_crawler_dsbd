@@ -77,7 +77,8 @@ with tab1:
 		        "col2": [3,2,1,1]
 		    }
 		)
-		st.bar_chart(chart_data)
+		st.bar_chart(chart_data, x = col1, y = col2)
+		
 
 	with t1_r4c2:
 		st.dataframe(div_check, hide_index = True, width = 2000, height = 300)
