@@ -173,5 +173,6 @@ with tab3:
 
 		t3_r1c3 = st.selectbox('- 티커', pd.unique(temp_splits['티커']))
 		temp_splits = temp_splits[temp_splits['티커'] == t3_r1c3].sort_values(['티커', '권리락일'], ascending = [True, False]).reset_index(drop = True).copy()
-
-	st.dataframe(temp_splits, hide_index = True, width = 2000, height = 300)
+		
+	st.bar_chart(temp, x = '권리락일', y = '분할/병합, color = '#F08080')
+	st.dataframe(temp_splits, hide_index = True, width = 2000, height = 200)
