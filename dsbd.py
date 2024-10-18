@@ -73,8 +73,8 @@ with tab1:
 		# 각 사이트별 건수 Bar chart ()
 		chart_data = pd.DataFrame(
 		    {
-		        "col1": list(['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com']),
-		        "col2": [3,2,1,1]
+		        "사이트": list(['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com']),
+		        "배당내역 불일치 건수": [3,2,1,1]
 		    }
 		)
 		st.bar_chart(chart_data, x = 'col1', y = 'col2', color = '#808080')
