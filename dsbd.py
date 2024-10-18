@@ -47,7 +47,7 @@ with tab1:
 	t1_r1c1, t1_r1c2 = st.columns(2)
 	
 	with t1_r1c2:
-		t1_r1c1_sb1 = st.selectbox('', ['주기변동', '분할/병합', '배당컷'])
+		t1_r1c1_sb1 = st.selectbox(['주기변동', '분할/병합', '배당컷'])
 
 	t1_r2c1, t1_r2c2 = st.columns(2)
 
@@ -64,7 +64,7 @@ with tab1:
 	t1_r3c1, t1_r3c2 = st.columns(2)
 
 	with t1_r3c2:
-		t1_r1c1_sb1 = st.selectbox('', ['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com'])
+		t1_r1c1_sb1 = st.selectbox(['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com'])
 		
 	t1_r4c1, t1_r4c2 = st.columns(2)
 
