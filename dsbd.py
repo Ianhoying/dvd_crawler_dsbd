@@ -72,7 +72,7 @@ with tab1:
 		# st.markdown('배당감소 종목 수 : :blue-background{cnt}개')
 		st.markdown(
 		f"""
-		  #### "<span style="color:blue">{temp1}</span> has made {cnt} calls"  
+		  #### " has made {cnt} calls"  
 		"""
 		)
 		
