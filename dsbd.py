@@ -41,19 +41,25 @@ tab1, tab2, tab3 = st.tabs(t)
 ### 01.홈
 with tab1:
 	
-	st.subheader('배당감소 종목\n\n')
+	st.subheader('배당감소\n\n')
 	st.caption('체크리스트\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
 
 	t1_r1c1, t1_r1c2 = st.columns(2)
 	
 	with t1_r1c2:
-		t1_r1c1_sb1 = st.selectbox('', ['주기변동', '분할/병합', '배당컷'])
+		t1_r1c1_sb1 = st.selectbox('', ['배당컷', '주기변동', '분할/병합'])
 
 	t1_r2c1, t1_r2c2 = st.columns(2)
 
 	with t1_r2c1:
 		# 각 항목별 건수 Bar chart (주기변동, 분할/병합, 배당컷)
-		pass
+		chart_data = pd.DataFrame(
+		    {
+		        "감소 사유": list(['주기변동', '분할/병합' ,'배당컷']),
+		        "종목 수": [3,2,1]
+		    }
+		)
+		st.bar_chart(chart_data, x = '"감소 사유', y = '종목 수', color = '#808080')
 
 	with t1_r2c2:
 		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300)
