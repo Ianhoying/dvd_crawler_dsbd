@@ -69,15 +69,11 @@ with tab1:
 
 	with t1_r2c1:
 		cnt = str(len(div_cut))
-		# st.markdown('배당감소 종목 수 : :blue-background{cnt}개')
-		st.markdown(
-		f"""
-		  #### 배당감소 종목 수 : :blue-background[{cnt} 개]
-		"""
-		)
-		# st.markdown('''
-		#     :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
-		#     :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.''')
+		# st.markdown(
+		# f"""
+		#   #### 배당감소 종목 수 : :blue-background[{cnt} 개]
+		# """
+		# )
 		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300, column_order = ('티커', '지급주기 변동', '분할/병합 여부', '분할/병합', '권리락일',\
 												     '직전_배당락일', '배당락일',\
 												     '직전_배당금액_n', '배당금액_n', '직전_배당금액_s', '배당금액_s',\
