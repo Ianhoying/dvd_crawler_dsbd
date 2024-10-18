@@ -57,7 +57,8 @@ tab1, tab2, tab3 = st.tabs(t)
 with tab1:
 	
 	st.subheader('배당감소 모니터링\n\n')
-	st.caption('👨‍💻 대상 : 미국주식 배당성장주 498개(from Nasdaq, Seeking-Alpha, Yahoo-Finance, Digrin)')
+	st.caption('🎯 대상 : 미국주식 배당성장주 498개')
+	st.caption('👨‍💻 사이트 : 4개(Nasdaq, Seeking-Alpha, Yahoo-Finance, Digrin)')
 	st.caption('🚩 기준 : 조회일자 기준 과거 배당내역 1건 & 다음 배당내역 1건 비교 (단, 다음 배당내역이 없는 경우 과거 배당내역 2건)')
 	st.caption('\n✅ 체크리스트\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
 
