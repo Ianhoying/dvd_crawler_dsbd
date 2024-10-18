@@ -28,10 +28,10 @@ div_cut.loc[~div_cut['티커'].isin(split_yn['티커']), '분할/병합 여부']
 div_cut = pd.merge(div_cut, split_yn[['티커', '분할/병합', '권리락일']], 'left', '티커')
 
 # Div cut check
-div_cut['구분'] = '기타(오류)'
-div_cut.loc[ (div_cut['분할/병합'] > 0) & (True), '구분'] = '분할/병합'
-div_cut.loc[ (div_cut['지급주기 변동'] == 'Y') & (True), '구분'] = '지급주기 변동'
-
+div_cut['사유'] = '기타(오류)'
+div_cut.loc[ (div_cut['분할/병합'] > 0) & (True), '사유'] = '분할/병합'
+div_cut.loc[ (div_cut['지급주기 변동'] == 'Y') & (True), '사유'] = '지급주기 변동'
+div_cut = div_cut.sort_values(['분할/병합 여부', '지급주기 변동', '티커'], ascending = [False, False, True]).reset_index(drop = True)
 
 
 
@@ -79,7 +79,7 @@ with tab1:
 		  #### 배당감소 종목 수 : :blue-background[{cnt} 개]
 		"""
 		)
-		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300, column_order = ('티커', '구분', '지급주기 변동', '분할/병합 여부', '분할/병합', '권리락일',\
+		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300, column_order = ('티커', '사유', '지급주기 변동', '분할/병합 여부', '분할/병합', '권리락일',\
 												     '직전_배당락일', '배당락일',\
 												     '직전_배당금액_n', '배당금액_n', '직전_배당금액_s', '배당금액_s',\
 												     '직전_수정배당금액_d', '수정배당금액_d'))
@@ -90,8 +90,8 @@ with tab1:
 		  #### 배당감소 사유별 종목 수
 		"""
 		)
-		div_cut_count = div_cut.groupby('구분')[['티커']].count().reset_index().rename(columns = {'티커' : '종목 수'})
-		st.bar_chart(div_cut_count, x = '구분', y = '종목 수', color = '#F08080')
+		div_cut_count = div_cut.groupby('사유')[['티커']].count().reset_index().rename(columns = {'티커' : '종목 수'})
+		st.bar_chart(div_cut_count, x = '사유', y = '종목 수', color = '#F08080')
 		
 
 	st.divider()
