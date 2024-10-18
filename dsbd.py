@@ -102,12 +102,16 @@ with tab2:
 		t1_r1c1 = st.selectbox('- 사이트', ['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com'])
 		if t1_r1c1 == 'Nasdaq.com':
 			temp = n.copy()
+			y_axis = '배당금액'
 		if t1_r1c1 == 'SeekingAlpha':
 			temp = s.copy()
+			y_axis = '수정배당금액'
 		if t1_r1c1 == 'YahooFinance':
 			temp = y.copy()
+			y_axis = '수정배당금액'
 		if t1_r1c1 == 'Digrin.com':
 			temp = d.copy()
+			y_axis = '수정배당금액'
 	
 	with t1_r1c2_sb2:
 
@@ -130,7 +134,9 @@ with tab2:
 		t1_r1c3 = st.selectbox('- 티커', pd.unique(temp['티커']))
 		temp = temp[temp['티커'] == t1_r1c3].reset_index(drop = True).copy()
 
-	st.dataframe(temp, hide_index = True, width = 2000, height = 1000)
+	st.bar_chart(temp, x = '배당락일', y = y_axis, color = '#808080')
+
+	st.dataframe(temp, hide_index = True, width = 2000, height = 500)
 
 
 ### 03.분할/병합내역
