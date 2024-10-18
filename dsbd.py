@@ -18,6 +18,13 @@ div_cut = pd.read_csv('div_cut.csv', encoding = 'EUC-KR')
 div_check = pd.read_csv('div_check.csv', encoding = 'EUC-KR')
 total_splits = pd.read_csv('total_splits.csv', encoding = 'EUC-KR')
 
+split_yn = pd.merge(div_cut, total_splits, 'left', '티커')
+split_yn = split_yn.loc[(split_yn['배당락일'] >= split_yn['권리락일']) &\
+(split_yn['직전_배당락일'] <= split_yn['권리락일'])].reset_index(drop = True)
+
+div_cut.loc[div_cut['티커'].isin(split_yn['티커']), '분할/병합 여부'] = 'Y'
+div_cut.loc[~div_cut['티커'].isin(split_yn['티커']), '분할/병합 여부'] = 'N'
+
 
 
 # Dashboard 
