@@ -25,7 +25,7 @@ split_yn = split_yn.loc[(split_yn['배당락일'] >= split_yn['권리락일']) &
 div_cut.loc[div_cut['티커'].isin(split_yn['티커']), '분할/병합 여부'] = 'Y'
 div_cut.loc[~div_cut['티커'].isin(split_yn['티커']), '분할/병합 여부'] = 'N'
 
-
+div_cut = pd.merge(div_cut, split_yn[['티커', '분할/병합']], 'left', '티커')
 
 # Dashboard 
 
@@ -62,7 +62,7 @@ with tab1:
 	t1_r2c1, t1_r2c2 = st.columns(2)
 
 	with t1_r2c1:
-		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300)
+		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300, column_order = ('티커', '지급주기 변동', '분할/병합 여부', '배당락일', '직전_배당락일'))
 		
 	with t1_r2c2:
 
