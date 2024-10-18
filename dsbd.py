@@ -127,7 +127,7 @@ with tab1:
 ### 02.배당내역
 with tab2:
 
-	# Chart - Upcoming Dividends
+	st.subheader('크롤링 사이트별 과거 배당내역 조회\n\n')
 	
 
 	
