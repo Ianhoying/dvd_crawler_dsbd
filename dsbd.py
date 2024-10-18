@@ -72,9 +72,13 @@ with tab1:
 		# st.markdown('배당감소 종목 수 : :blue-background{cnt}개')
 		st.markdown(
 		f"""
-		  #### 배당감소 종목 수 : :blue-background{cnt} 개
+		  #### 배당감소 종목 수 : :blue-background[cnt] 개
 		"""
 		)
+
+		st.markdown('''
+		    :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
+		    :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.''')
 		
 		# st.markdown('''
 		#     :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
