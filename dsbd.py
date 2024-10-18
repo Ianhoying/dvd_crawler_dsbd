@@ -77,7 +77,7 @@ with tab1:
 		        "배당내역 불일치 건수": [3,2,1,1]
 		    }
 		)
-		st.bar_chart(chart_data, x = 'col1', y = 'col2', color = '#808080')
+		st.bar_chart(chart_data, x = '사이트', y = '배당내역 불일치 건수', color = '#808080')
 		
 
 	with t1_r4c2:
