@@ -59,7 +59,7 @@ with tab1:
 		        "종목 수": [3,2,1]
 		    }
 		)
-		st.bar_chart(chart_data, x = '"감소 사유', y = '종목 수', color = '#808080')
+		st.bar_chart(chart_data, x = '감소 사유', y = '종목 수', color = '#808080')
 
 	with t1_r2c2:
 		st.dataframe(div_cut, hide_index = True, width = 2000, height = 300)
