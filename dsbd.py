@@ -27,6 +27,11 @@ div_cut.loc[~div_cut['티커'].isin(split_yn['티커']), '분할/병합 여부']
 
 div_cut = pd.merge(div_cut, split_yn[['티커', '분할/병합', '권리락일']], 'left', '티커')
 
+# Div cut check
+div_cut['구분'] = '기타(오류)'
+div_cut.loc[ (div_cut['분할/병합 여부'] > 0) & (), '구분'] = '분할/병합'
+div_cut.loc[ (div_cut['지급주기 변동'] == 'Y') & (), '구분'] = '분할/병합'
+
 # Dashboard 
 
 ## Page Full width
@@ -49,7 +54,7 @@ tab1, tab2, tab3 = st.tabs(t)
 with tab1:
 	
 	st.subheader('배당감소 모니터링\n\n')
-
+	st.caption('기준 : 조회일자 기준 과거 배당내역 1건 & 다음 배당내역 1건 비교 (단, 다음 배당내역이 없는 경우 과거 배당내역 2건)')
 	st.caption('\n체크리스트\n- 주식분할/병합 여부\n- 배당지급 주기 변동 여부')
 
 	t1_r1c1, t1_r1c2 = st.columns(2)
