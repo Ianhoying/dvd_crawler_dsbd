@@ -71,7 +71,12 @@ with tab1:
 
 	with t1_r4c1:
 		# 각 사이트별 건수 Bar chart ()
-		chart_data = pd.DataFrame({(3,2,1,1)}, columns = ['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com'])
+		chart_data = pd.DataFrame(
+		    {
+		        "col1": list(['Nasdaq.com', 'SeekingAlpha' ,'YahooFinance', 'Digrin.com']),
+		        "col2": [3,2,1,1]
+		    }
+		)
 		st.bar_chart(chart_data)
 
 	with t1_r4c2:
