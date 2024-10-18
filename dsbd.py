@@ -136,7 +136,7 @@ with tab2:
 		
 	st.subheader('(주의 : 특별배당 포함)')
 	st.bar_chart(temp, x = '배당락일', y = y_axis, color = '#F08080')
-
+	st.divider()
 	st.dataframe(temp, hide_index = True, width = 2000, height = 500)
 
 
@@ -175,4 +175,5 @@ with tab3:
 		temp_splits = temp_splits[temp_splits['티커'] == t3_r1c3].sort_values(['티커', '권리락일'], ascending = [True, False]).reset_index(drop = True).copy()
 		
 	st.line_chart(temp_splits, x = '권리락일', y = '분할/병합', color = '#F08080')
+	st.divider()
 	st.dataframe(temp_splits, hide_index = True, width = 2000, height = 200)
