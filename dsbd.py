@@ -76,13 +76,14 @@ with tab1:
 	with t1_r2c2:
 
 		# 각 항목별 건수 Bar chart (주기변동, 분할/병합, 배당컷)
-		chart_data = pd.DataFrame(
-		    {
-		        "감소 사유": list(['주기변동', '분할/병합' ,'배당컷', '기타(오류 등)']),
-		        "종목 수": [0, 0, 0, 6]
-		    }
-		)
-		st.bar_chart(chart_data, x = '감소 사유', y = '종목 수', color = '#F08080')
+		# chart_data = pd.DataFrame(
+		#     {
+		#         "감소 사유": list(['주기변동', '분할/병합' ,'배당컷', '기타(오류 등)']),
+		#         "종목 수": [0, 0, 0, 6]
+		#     }
+		# )
+		div_cut_count = div_cut.groupby('구분')[['티커']].count().reset_index().rename(columns = {'티커' : '종목 수'})
+		st.bar_chart(chart_data, x = '구분', y = '종목 수', color = '#F08080')
 		
 
 	st.divider()
