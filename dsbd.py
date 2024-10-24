@@ -4,7 +4,7 @@ import streamlit as st, pandas as pd, numpy as np, matplotlib.pyplot as plt, dat
 # Data Import 
 
 ## Data : Dividends
-n = pd.read_csv('data/n.csv', encoding = 'EUC-KR')
+n = pd.read_csv('/data/n.csv', encoding = 'EUC-KR')
 s = pd.read_csv('data/s.csv', encoding = 'EUC-KR')
 y = pd.read_csv('data/y.csv', encoding = 'EUC-KR')
 d = pd.read_csv('data/d.csv', encoding = 'EUC-KR')
