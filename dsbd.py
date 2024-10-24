@@ -4,19 +4,19 @@ import streamlit as st, pandas as pd, numpy as np, matplotlib.pyplot as plt, dat
 # Data Import 
 
 ## Data : Dividends
-n = pd.read_csv('n.csv', encoding = 'EUC-KR')
-s = pd.read_csv('s.csv', encoding = 'EUC-KR')
-y = pd.read_csv('y.csv', encoding = 'EUC-KR')
-d = pd.read_csv('d.csv', encoding = 'EUC-KR')
+n = pd.read_csv('data/n.csv', encoding = 'EUC-KR')
+s = pd.read_csv('data/s.csv', encoding = 'EUC-KR')
+y = pd.read_csv('data/y.csv', encoding = 'EUC-KR')
+d = pd.read_csv('data/d.csv', encoding = 'EUC-KR')
 
 ## Data : Stock Splits
-y_splits = pd.read_csv('y_splits.csv', encoding = 'EUC-KR')
-d_splits = pd.read_csv('d_splits.csv', encoding = 'EUC-KR')
+y_splits = pd.read_csv('data/y_splits.csv', encoding = 'EUC-KR')
+d_splits = pd.read_csv('data/d_splits.csv', encoding = 'EUC-KR')
 
 ## Data : Stock Splits
-div_cut = pd.read_csv('div_cut.csv', encoding = 'EUC-KR')
-div_check = pd.read_csv('div_check.csv', encoding = 'EUC-KR')
-total_splits = pd.read_csv('total_splits.csv', encoding = 'EUC-KR')
+div_cut = pd.read_csv('data/div_cut.csv', encoding = 'EUC-KR')
+div_check = pd.read_csv('data/div_check.csv', encoding = 'EUC-KR')
+total_splits = pd.read_csv('data/total_splits.csv', encoding = 'EUC-KR')
 
 split_yn = pd.merge(div_cut, total_splits, 'left', '티커')
 split_yn = split_yn.loc[(split_yn['배당락일'] >= split_yn['권리락일']) &\
